@@ -1,4 +1,5 @@
-288  cd 06-Facts/
+  ```
+  288  cd 03-Facts/
   289  ls
   290  ansible web -m ping
   291  ansible-doc setup
@@ -27,3 +28,4 @@
   314  python -m json.tool 172.31.0.100
   315  python -m json.tool 172.31.0.100 | grep -i master
   316  ls
+```

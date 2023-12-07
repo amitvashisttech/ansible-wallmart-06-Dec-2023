@@ -1,0 +1,29 @@
+---
+
+- hosts: web
+  name: "WebServer Deployment - PLAY" 
+  tasks:
+  - name: Install Apache Package
+    apt: name=apache2 state=present
+
+
+  - name: Start Apache Service 
+    service: name=apache2 state=started
+
+
+
+- hosts: all 
+  name: "Disbale Firewall - PLAY" 
+  tasks:
+  - name: Disable Firewall Service 
+    service: name=ufw state=started
+
+
+
+- hosts: 'web:&prod:!ansible'
+  name: "Install Tree Package - PLAY" 
+  tasks:
+  - name: Install Tree Package
+    apt: name=tree state=present
+
+ 

@@ -1,0 +1,6 @@
+---
+
+- hosts: 172.31.0.101 
+  tasks:
+  - name: Install Tree Package
+    apt: name=tree state=present

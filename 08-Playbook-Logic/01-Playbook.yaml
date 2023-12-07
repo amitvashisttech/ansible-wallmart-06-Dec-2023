@@ -9,7 +9,7 @@
     when: ansible_os_family == "Debian"
 
   - name: Install HTTPD Package
-    yum: name=apache2 state=present
+    yum: name=httpd state=present
     when: ansible_os_family == "RedHat"
 
   - name: Start Apache Service 
@@ -19,7 +19,7 @@
  
   - name: Start HTTPD Service 
     service: name=httpd state=started
-    when: ansible_os_family == "Redhat"
+    when: ansible_os_family == "RedHat"
 
   - name: Deploy Custom Index Web Page
     copy: src=files/index.html dest=/var/www/html/index.html

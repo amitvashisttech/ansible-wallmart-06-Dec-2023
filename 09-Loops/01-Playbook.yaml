@@ -1,0 +1,45 @@
+---
+
+- hosts: 172.31.0.101
+  name: "Loop over a list of packages"
+  vars:
+    packages:
+      - { key: 'tree', value: 'dir tree package' }
+      - { key: 'apache2', value: 'webserver package' }
+      - { key: 'ntp', value: 'ntp sync package' }
+  tasks:
+  - name: Install Packages 
+    file: path=/tmp/mydir_{{ item }} state=touch
+    with_items:
+      - tree
+      - apache2 
+      - ntp
+
+  - name: Create Sample Dir
+    file: path=/tmp/mydir_{{ item }} state=touch
+    with_sequence: start=1 end=5
+
+
+
+  - name: Create Sample Dir
+    file: path=/tmp/mydir_{{ item }} state=touch
+    loop:
+     - test1 
+     - test2
+
+
+  - name: Install Packages 
+    file: 
+      path: /tmp/"{{ item.key }}"
+      state: touch
+    loop: "{{packages }}"
+
+
+
+
+
+
+
+
+
+
